@@ -1,4 +1,4 @@
-# SL-API-to-RSS
+# SL-API-to-JSON-for-Home-Assistant-Restful-Sensor
 
 Supported endpoints
 * realtimedeparturesV4
@@ -18,24 +18,13 @@ Supported endpoints
 
 #### Example
 ```
-$ curl  'http://localhost:5000/realtimedeparturesV4?stationId=9326&apiKey=SECRETKEY&transportMode=Metros&destinationFilter=Kungs'
-<?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
-  <channel>
-    <title>realtimedeparturesV4 9326 (Metros)</title>
-    <link>https://github.com/theseal/SL-API-to-RSS</link>
-    <description>realtimedeparturesV4 to RSS.</description>
-    <docs>http://www.rssboard.org/rss-specification</docs>
-    <generator>python-feedgen</generator>
-    <lastBuildDate>Sat, 24 Feb 2018 20:14:08 +0000</lastBuildDate>
-    <item>
-      <title>Kungsträdgården 1 min</title>
-    </item>
-    <item>
-      <title>Kungsträdgården 15 min</title>
-    </item>
-  </channel>
-</rss>
+$ curl -s 'http://localhost:5000/realtimedeparturesV4?stationId=9326&transportMode=Metros&destinationFilter=Kung&apiKey=SECRETKEY' | jq
+{
+  "departures": [
+    "Kungsträdgården 5 min",
+    "Kungsträdgården 23:44"
+  ]
+}
 ```
 
 Patches are welcome!
