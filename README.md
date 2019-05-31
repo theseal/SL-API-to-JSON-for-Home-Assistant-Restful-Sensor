@@ -27,4 +27,34 @@ $ curl -s 'http://localhost:5000/realtimedeparturesV4?stationId=9326&transportMo
 }
 ```
 
+#### Example of Home Assistant configuration
+```
+sensor:
+  - platform: rest
+    name: SL REST
+    resource: http://localhost:5000/realtimedeparturesV4?stationId=9326&transportMode=Metros&destinationFilter=Kung&apiKey=SECRETKEY
+    value_template: '{{ value_json }}'
+    scan_interval: 60
+    json_attributes:
+      - departures
+  - platform: template
+    sensors:
+      first:
+        value_template: "{{ states.sensor.sl_rest.attributes['departures'][0] }}"
+        friendly_name: ' '
+        icon_template: mdi:train
+      second:
+        value_template: "{{ states.sensor.sl_rest.attributes['departures'][1] }}"
+        friendly_name: ' '
+        icon_template: mdi:train
+      third:
+        value_template: "{{ states.sensor.sl_rest.attributes['departures'][2] }}"
+        friendly_name: ' '
+        icon_template: mdi:train
+      fourth:
+        value_template: "{{ states.sensor.sl_rest.attributes['departures'][3] }}"
+        friendly_name: ' '
+        icon_template: mdi:train
+```
+
 Patches are welcome!
