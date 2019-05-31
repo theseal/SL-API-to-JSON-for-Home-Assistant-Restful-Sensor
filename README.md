@@ -16,6 +16,11 @@ Supported endpoints
   * Trams
   * Ships
 
+#### Screenshot
+![srceenshot.png](./screenshot.png)
+
+
+
 #### Example
 ```
 $ curl -s 'http://localhost:5000/realtimedeparturesV4?stationId=9326&transportMode=Metros&destinationFilter=Kung&apiKey=SECRETKEY' | jq
