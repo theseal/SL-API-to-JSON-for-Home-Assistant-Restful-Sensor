@@ -1,11 +1,11 @@
 certifi==2023.7.22
 chardet==3.0.4
 Click==7.0
-Flask==1.0.3
+Flask==2.2.5
 idna==3.7
 itsdangerous==1.1.0
 Jinja2==3.1.4
 MarkupSafe==1.1.1
 requests==2.31.0
-urllib3==1.26.5
 Werkzeug==3.0.3
+urllib3==1.26.18
